@@ -16,7 +16,7 @@ Open [http://localhost:3000](http://localhost:3000) to view the page.
 - **Sticky section navigation** with scroll-spy highlighting (13 sections)
 - **Expandable role cards** and contribution workflow stepper
 - **RACI matrix** with clickable cells explaining accountability
-- **Templates** with expandable outlines and copy-to-clipboard
+- **Templates** with expandable outlines, copy-to-clipboard, and fillable template pages
 - **Lifecycle status explorer** with adopter guidance
 - **Roadmap** with quarter tabs, status filters, and expandable initiatives
 - **Decision log** with search, status filter, and expandable ADR cards
@@ -36,6 +36,19 @@ Edit [`src/lib/governance-content.ts`](src/lib/governance-content.ts) to update:
 - Roles, workflow steps, lifecycle statuses, and checklist items
 
 Users can also edit resource links directly in the browser via the Resources section.
+
+### Template pages
+
+Each template has a dedicated fillable page:
+
+| Template | URL |
+|----------|-----|
+| Component Proposal | `/templates/proposal` |
+| Component Spec | `/templates/spec` |
+| PR Review Checklist | `/templates/pr-checklist` |
+| Deprecation Notice | `/templates/deprecation` |
+
+Progress auto-saves to browser localStorage. Use **Copy as Markdown** or **Download PDF** to export filled templates.
 
 ## Build
 

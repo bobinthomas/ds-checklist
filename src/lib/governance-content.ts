@@ -76,7 +76,7 @@ export const workflowSteps = [
       "Include accessibility considerations from the start.",
     ],
     linkLabel: "Proposal Template",
-    linkHref: "#templates",
+    linkHref: "/templates/proposal",
   },
   {
     id: "submit",
@@ -338,7 +338,7 @@ export const templates = [
     id: "proposal",
     title: "Component Proposal",
     description: "Structure a new component or pattern request for core team review.",
-    url: "#",
+    url: "/templates/proposal",
     outline: [
       "Problem statement — what gap does this fill?",
       "Affected products and use cases",
@@ -352,7 +352,7 @@ export const templates = [
     id: "spec",
     title: "Component Spec",
     description: "Detailed specification for an approved component before implementation.",
-    url: "#",
+    url: "/templates/spec",
     outline: [
       "Component name and category",
       "Anatomy and sub-components",
@@ -367,7 +367,7 @@ export const templates = [
     id: "pr-checklist",
     title: "PR Review Checklist",
     description: "Checklist for maintainers reviewing a component contribution PR.",
-    url: "#",
+    url: "/templates/pr-checklist",
     outline: [
       "Matches approved spec and Figma design",
       "Passes accessibility checklist",
@@ -382,7 +382,7 @@ export const templates = [
     id: "deprecation",
     title: "Deprecation Notice",
     description: "Template for announcing component deprecation to adopters.",
-    url: "#",
+    url: "/templates/deprecation",
     outline: [
       "Component being deprecated and reason",
       "Recommended replacement",

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { templates } from "@/lib/governance-content";
 import { SectionHeading } from "./SectionHeading";
@@ -91,14 +92,12 @@ export function TemplatesSection() {
                     >
                       {copiedId === template.id ? "Copied!" : "Copy outline"}
                     </button>
-                    <a
+                    <Link
                       href={template.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
                       className="rounded-lg bg-accent px-3 py-1.5 text-sm font-medium text-white hover:bg-accent-dark"
                     >
                       Open template →
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
