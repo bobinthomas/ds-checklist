@@ -1,7 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { workflowSteps } from "@/lib/governance-content";
+import {
+  tokenGovernanceRule,
+  tokenTiers,
+  workflowSteps,
+} from "@/lib/governance-content";
 import { SectionHeading } from "./SectionHeading";
 
 export function WorkflowStepper() {
@@ -106,6 +110,30 @@ export function WorkflowStepper() {
           );
         })}
       </ol>
+
+      {/* Token Governance note */}
+      <div className="mt-8 rounded-2xl border border-ink/10 bg-surface-raised p-6">
+        <h3 className="font-display text-lg font-semibold text-ink">
+          Token Governance
+        </h3>
+        <div className="mt-3 flex flex-wrap gap-2">
+          {tokenTiers.map((tier) => (
+            <span
+              key={tier.id}
+              title={tier.description}
+              className="rounded-full border border-ink/10 bg-surface px-3 py-1 text-xs font-medium text-ink"
+            >
+              {tier.title}
+            </span>
+          ))}
+        </div>
+        <p className="mt-3 text-sm leading-relaxed text-ink-muted">
+          {tokenTiers[0].description}
+        </p>
+        <p className="mt-2 text-sm leading-relaxed text-ink-muted">
+          {tokenGovernanceRule}
+        </p>
+      </div>
     </section>
   );
 }

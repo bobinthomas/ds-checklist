@@ -131,7 +131,7 @@ export function ResourcesPanel() {
                   />
                 </div>
               </div>
-            ) : (
+            ) : resource.url ? (
               <a
                 href={resource.url}
                 target="_blank"
@@ -145,6 +145,15 @@ export function ResourcesPanel() {
                   {resource.description}
                 </p>
               </a>
+            ) : (
+              <div>
+                <span className="font-display text-base font-semibold text-ink-muted">
+                  {resource.label}
+                </span>
+                <p className="mt-1 text-sm text-ink-muted">
+                  {resource.description}
+                </p>
+              </div>
             )}
           </li>
         ))}

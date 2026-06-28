@@ -1,4 +1,4 @@
-export const DESIGN_SYSTEM_NAME = "[Your Design System Name]";
+export const DESIGN_SYSTEM_NAME = "HikeOn Design System";
 
 export const sections = [
   { id: "overview", label: "Overview" },
@@ -8,6 +8,7 @@ export const sections = [
   { id: "raci", label: "RACI" },
   { id: "templates", label: "Templates" },
   { id: "lifecycle", label: "Lifecycle" },
+  { id: "system-health", label: "System Health" },
   { id: "roadmap", label: "Roadmap" },
   { id: "versioning", label: "Versioning" },
   { id: "communication", label: "Communication" },
@@ -192,32 +193,32 @@ export type Resource = {
 export const defaultResources: Resource[] = [
   {
     id: "figma",
-    label: "Figma Library",
-    url: "#",
+    label: "Figma Library (team-specific — redacted)",
+    url: "",
     description: "Component library and design tokens",
   },
   {
     id: "storybook",
-    label: "Storybook / Component Repo",
-    url: "#",
+    label: "Storybook / Component Repo (team-specific — redacted)",
+    url: "",
     description: "Live component documentation and source code",
   },
   {
     id: "tokens",
-    label: "Design Tokens",
-    url: "#",
+    label: "Design Tokens (team-specific — redacted)",
+    url: "",
     description: "Color, typography, spacing, and motion tokens",
   },
   {
     id: "tracker",
-    label: "Bug or Enhancement Tracker",
-    url: "#",
+    label: "Bug or Enhancement Tracker (team-specific — redacted)",
+    url: "",
     description: "JIRA, Linear, or Notion backlog",
   },
   {
     id: "feedback",
-    label: "Anonymous Feedback Form",
-    url: "#",
+    label: "Anonymous Feedback Form (team-specific — redacted)",
+    url: "",
     description: "Share suggestions without attribution",
   },
 ];
@@ -477,6 +478,20 @@ export const decisionStatusLabels: Record<DecisionStatus, string> = {
 export const decisions = [
   {
     id: "adr-001",
+    date: "2025-11-20",
+    title: "Centralized token repository",
+    status: "superseded" as DecisionStatus,
+    context:
+      "Tokens were scattered across product repos with no single source of truth.",
+    decision:
+      "All design tokens live in a dedicated tokens package consumed via npm.",
+    consequences: [
+      "Superseded by ADR-003 token migration initiative in Q3 2026.",
+      "Legacy token imports deprecated in v2.0.",
+    ],
+  },
+  {
+    id: "adr-002",
     date: "2026-03-15",
     title: "Adopt hybrid governance model",
     status: "accepted" as DecisionStatus,
@@ -491,7 +506,7 @@ export const decisions = [
     ],
   },
   {
-    id: "adr-002",
+    id: "adr-003",
     date: "2026-04-02",
     title: "Enforce semver for all releases",
     status: "accepted" as DecisionStatus,
@@ -506,7 +521,7 @@ export const decisions = [
     ],
   },
   {
-    id: "adr-003",
+    id: "adr-004",
     date: "2026-05-10",
     title: "WCAG AA as minimum accessibility bar",
     status: "accepted" as DecisionStatus,
@@ -521,32 +536,62 @@ export const decisions = [
     ],
   },
   {
-    id: "adr-004",
-    date: "2026-06-01",
-    title: "Consolidate on React + Figma as source of truth",
-    status: "proposed" as DecisionStatus,
-    context:
-      "Some teams maintain parallel Vue implementations. Drift between design and code is increasing.",
-    decision:
-      "React is the canonical code implementation. Figma library is the canonical design source. Vue wrappers may be community-maintained but are not officially supported.",
-    consequences: [
-      "Pending stakeholder review from Vue product teams.",
-      "If accepted, Vue docs move to community section.",
-      "Figma-to-code parity checks added to release process.",
-    ],
-  },
-  {
     id: "adr-005",
-    date: "2025-11-20",
-    title: "Centralized token repository",
-    status: "superseded" as DecisionStatus,
+    date: "2026-06-01",
+    title: "Vue as canonical code implementation, Figma as source of truth",
+    status: "accepted" as DecisionStatus,
     context:
-      "Tokens were scattered across product repos with no single source of truth.",
+      "Token-to-prop mappings were maintained ad hoc across teams, causing drift between Figma and the production Vue components that ship to users.",
     decision:
-      "All design tokens live in a dedicated tokens package consumed via npm.",
+      "Vue is the canonical code implementation. Semantic tokens map 1:1 to Vue component props so design and code share one contract. Figma library is the canonical design source.",
     consequences: [
-      "Superseded by ADR-002 token migration initiative in Q3 2026.",
-      "Legacy token imports deprecated in v2.0.",
+      "Token-to-prop parity checks added to the release process.",
+      "Figma-to-code naming parity enforced at handoff.",
     ],
   },
 ];
+
+export const systemHealthMetrics = [
+  {
+    id: "adoption",
+    title: "Adoption / Coverage",
+    primary: true,
+    description:
+      "% of product UI built from the design system vs one-off work. This is the primary success metric.",
+  },
+  {
+    id: "detach-rate",
+    title: "Detach Rate",
+    primary: false,
+    description:
+      "Tracked per component via Figma Library Analytics. A rising detach rate is a health signal — it means the component is failing real use.",
+  },
+];
+
+export const systemHealthReviewThreshold =
+  "Components exceeding 15% detachment are flagged for redesign.";
+
+export const systemHealthNote =
+  "Adoption and detach rate are how the system proves it's working — not component count.";
+
+export const tokenTiers = [
+  {
+    id: "primitives",
+    title: "Primitives",
+    description:
+      "Not directly consumable in design — only referenced by other tokens.",
+  },
+  {
+    id: "semantic",
+    title: "Semantic",
+    description: "Reference primitives; carry meaning (e.g. color-bg-danger).",
+  },
+  {
+    id: "component",
+    title: "Component",
+    description: "Reference semantic tokens; scoped to a specific component.",
+  },
+];
+
+export const tokenGovernanceRule =
+  "Adding a primitive or semantic token requires owner approval. Component tokens go through the standard contribution review.";

@@ -6,6 +6,7 @@ import { WorkflowStepper } from "@/components/governance/WorkflowStepper";
 import { RaciMatrix } from "@/components/governance/RaciMatrix";
 import { TemplatesSection } from "@/components/governance/TemplatesSection";
 import { LifecycleExplorer } from "@/components/governance/LifecycleExplorer";
+import { SystemHealthSection } from "@/components/governance/SystemHealthSection";
 import { RoadmapSection } from "@/components/governance/RoadmapSection";
 import { VersioningSection } from "@/components/governance/VersioningSection";
 import { CommunicationSection } from "@/components/governance/CommunicationSection";
@@ -32,6 +33,7 @@ export default function Home() {
             <RaciMatrix />
             <TemplatesSection />
             <LifecycleExplorer />
+            <SystemHealthSection />
             <RoadmapSection />
             <VersioningSection />
             <CommunicationSection />
